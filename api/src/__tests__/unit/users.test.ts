@@ -1,8 +1,26 @@
 import { describe, it, expect, vi, beforeEach } from "vitest";
 import { prismaMock } from "../mocks/prisma.ts";
+import { Request, Response, NextFunction} from "express";
 
 vi.mock("../../db.js", () => ({
     prisma: prismaMock,
+}));
+
+// Mock authentication/authorization middleware
+vi.mock("../../middleware/authenticate.ts", () => ({
+    authenticate: vi.fn((req, _res, next) => {
+        req.user = {
+            id: 1,
+            role: "ADMIN",
+        };
+        next();
+    }),
+}));
+
+vi.mock("../../middleware/authorize.ts", () => ({
+    authorize: vi.fn(() => (_req: Request, _res: Response, next: NextFunction) => {
+        next();
+    }),
 }));
 
 import request from "supertest";
