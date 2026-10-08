@@ -14,7 +14,8 @@
     "db:generate:sql": "npx prisma generate --sql",
     "test": "vitest run src/__tests__/unit",
     "test:watch": "vitest src/__tests__/unit",
-    "test:integration": "dotenv -e .env.test -- vitest run src/__tests__/integration"
+    "test:integration": "dotenv -e .env.test -- vitest run src/__tests__/integration",
+    "typecheck": "tsc --noEmit"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
