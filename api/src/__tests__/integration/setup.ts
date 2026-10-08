@@ -1,0 +1,18 @@
+import "dotenv/config";
+import { PrismaClient } from "../../generated/prisma/client.js";
+import { PrismaPg } from "@prisma/adapter-pg";
+
+const adapter = new PrismaPg({
+    connectionString: process.env.DATABASE_URL!,
+});
+
+export const prisma = new PrismaClient({ adapter });
+
+export async function cleanDb() {
+    await prisma.$transaction([
+        prisma.post.deleteMany(),
+        prisma.profile.deleteMany(),
+        prisma.user.deleteMany(),
+        prisma.category.deleteMany(),
+    ]);
+}
