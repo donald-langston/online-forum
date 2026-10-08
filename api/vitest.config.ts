@@ -5,6 +5,10 @@ export default defineConfig({
         globals: true,
         environment: "node",
         fileParallelism: false,
-        setupFiles: ["dotenv/config"]
+        setupFiles: ["dotenv/config"],
+        env: {
+            JWT_ACCESS_SECRET: "hglhvtfityfvktgvl.kjbkjbhygctresexkluhionoklmlkhbytftrdreaseyuhbnijk",
+            JWT_REFRESH_SECRET: "fcutdszewxyufvhlbn;jnjbhvcyerswesyxrfvkuhblnjnhljvtfrcdedxsdxyufcvi"
+        }
     },
 });
