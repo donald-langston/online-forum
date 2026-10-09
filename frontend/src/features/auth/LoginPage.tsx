@@ -34,7 +34,7 @@ export function LoginPage() {
                 {isPending ? "Logging in..." : "Log In"}
             </button>
             <p>
-                Don't have an account? <Link to="/">Register</Link>
+                Don't have an account? <Link to="/register">Register</Link>
             </p>
         </form>
     );
